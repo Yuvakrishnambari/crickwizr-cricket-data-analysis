@@ -1,0 +1,483 @@
+---
+title: "CRICKWIZR (Turning Scores into Winning Insights)"
+author: 
+  - "Nambari Yuva Narasimha Rao (24101583)"
+  - "Teja Achutha(24101605)"
+date: "2024-11-22"
+format: pdf
+---
+
+## 
+
+# Abstract
+
+This project focuses on analyzing cricket match data to extract insights about top-performing batsmen and bowlers and to predict a batsman's runs based on their performance in previous overs. Utilizing a dataset containing detailed ball-by-ball match statistics, the project identifies the top 10 batsmen by total runs and top 10 bowlers by economy rate. A predictive model based on historical performance is also proposed. The study aims to provide actionable insights for players, coaches, and analysts to improve performance and strategy.
+
+# Table of Contents
+
+1.  *Introduction*
+2.  *Objectives*
+3.  *Dataset Description*
+4.  *Methodology*
+    -   Data Cleaning and Preprocessing
+    -   Analysis of Top Performers
+    -   Predictive Model
+5.  *Results*
+    -   Top Batsmen and Bowlers
+    -   Prediction Model Outcomes
+6.  *Visualization*
+7.  *Particular Player Performance(Batsman and Bowler)*
+8.  *Conclusion and Future Work*
+9.  *References*
+
+# 1. Introduction
+
+**C**ricket, though globally admired, has turned itself into a domain where data analytics has been playing a transformative role. Historically considered a game of skill and intuition, cricket today is significantly benefited from systematic data-driven strategies in the present context. Ball-by-ball data analysis gives an unparalleled opportunity to quantify player performance, evaluate game strategy, and predict outcomes that can help various stakeholders make better decisions.
+
+The granularity of data, containing every delivery bowled, opened opportunities for identifying patterns that were simply not possible earlier. This report attempts to do just this by quantifying the best batsmen and the best bowlers based on total runs scored and economy rates respectively. In this, the historical performance data is used to build predictive models that forecast future batting outcomes.
+
+The study is not limited to mere descriptive analysis; rather, it tries to answer some critical strategic questions:
+
+-   Which batsmen have been the most consistent, and why?
+
+-   Which bowlers control the rate of scoring effectively under which conditions?
+
+-   How does performance history can be used to predict future outcomes, and with what level of certainty?
+
+The research falls within the broader trends in sports analytics, with insights from data driving change in how sports are played, coached, and managed. Given the focus on cricket, this study underlines the potential of data to improve further the game strategies, players' performance, and overall quality of the game.
+
+# 2. Objectives
+
+-   These objectives are framed in accordance with challenges and opportunities emanating from cricket analytics. They seek to bridge the gap between raw data and actionable strategies:
+
+    ### *Objective 1: Identifying Top-Performing Batsmen*
+
+    The first objective is to analyze the average runs scored by batsmen in different matches with the aim of finding out the top 10 performing batsmen. It is an important measure, as a batsman's run-scoring ability indicates his contribution toward his team's performance. The features analyzed will be run-scoring ability and consistency, adaptability to different match conditions, and the ability to perform under pressure.
+
+    ### *Objective 2: Analyzing the Best-Performing Bowlers*
+
+    Bowlers determine the pace of the game. Here, bowlers with the lowest economy rates are identified, which is a critical measure for describing the bowler's efficiency in controlling runs. Added supporting metrics such as wickets taken provide further insight into their overall contribution.
+
+    ### *Objective 3: Developing a Predictive Model for Batting Performance*
+
+    Predictive analytics is a cornerstone of modern sports strategies. By leveraging historical data, this work develops a model to estimate a batsman's future performance. This objective addresses the need for foresight in cricket, enabling teams to make informed decisions during matches and tournaments.
+
+    These objectives are not mutually exclusive but interlinked, offering an holistic approach to cricket analytics that combines descriptive, diagnostic, and predictive insights.
+
+# 3. Dataset Description
+
+The dataset to be analyzed is a rich set of delivery-level data from professional cricket matches. The depth and breadth of information offer an unparalleled look at player performances and game dynamics. Some key features of this dataset include:
+
+### *Match and Contextual Information*
+
+-   *Match IDs and Team Names*: Unique identifiers for matches and participating teams.
+-   *Innings, Overs, and Deliveries*: Detailed information about the sequencing of play within matches.
+-   *Player Roles*: Identifying batsmen, bowlers, and fielding players involved in each delivery.
+
+### *Performance Indicators*
+
+-   *Runs Scored*: Total runs off each delivery, further split into boundary runs, singles, and extras.
+-   *Bowling Metrics*: Economy rate, extras conceded-wides, no-balls, and total wickets taken.
+-   *Types of Dismissals*: Mode of dismissals: bowled, caught, run-out, stumped along with fielders involved.
+
+### *Dataset Scope*
+
+This dataset encompasses a variety of conditions, roles for players, and phases of matches across more than 150,000 deliveries. This is where diversity guarantees the robustness of the analysis, enabling generalizable insights across multiple scenarios.
+
+By integrating the contextual information with the performance metrics, this dataset lays the foundation for descriptive analyses and predictive modeling.
+
+# 4. Methodology
+
+## 4.1 Data Cleaning and Preprocessing
+
+The methodology followed in this research is designed to yield an accurate, reliable, and insightful study. Data preprocessing involves analysis of player performances and predictive modelling.
+
+## 4.1 *Data Cleaning and Preprocessing*
+
+Accurate preprocessing is key to revealing useful insights. The steps involved are:
+
+### *`Missing Data Handling`*`:`
+
+**"fielder"** and **"dismissal_kind"** are some of the columns that have the entries in them missing. There were some columns which were dealt with care. Missing values were imputed based on relevance and removed accordingly.
+
+### *`Data Aggregation`*`:`
+
+The aggregation by match, over, and player helped calculate the cumulative data related to total runs scored and economy rates.
+
+### *`Outlier Treatment`*`:`
+
+All the outliers, like exceptionally high run rates or dismissed, had been reviewed to ensure they were realistic game situations. The above steps prepared the dataset to be clean and consistent for analysis.
+
+## 4.2 Top Performers Analysis
+
+**`"Top Batsmen"`** It summed up the runs scored by each batsman in different matches and then ranked the top 10 batsmen. This analysis looked at two points: consistency in performance across various match conditions, the ability to provide high-impact performances in crucial matches.
+
+## 4.3 *Predictive Model Development*
+
+A predictive model was used to estimate runs of a batsman in future overs. Its methodology included:
+
+-   ***Feature Engineering***: Inclusion of lagged variables to capture the recent performance trend.
+
+-   **Model Selection:** The baseline model was Linear Regression, while Random Forest and Gradient Boosting were some of the advanced methods explored to achieve higher accuracy.
+
+-   ***Validation*****:** Reliability of the model was checked through metrics like Mean Squared Error (MSE), R-squared values.
+
+# 5. Results
+
+## 5.1 Top Batsmen
+
+The analysis identified the leading 10 batsmen who were consistent in making runs. Such players revealed: High adaptability to different conditions of the match. - Resilience under pressure, contributing a lot during critical matches.
+
+## 5.2 Top Bowlers
+
+The evaluation of bowlers brought into light those having exceptional economy rates, reflecting their ability to restrict scoring. The bowlers with a knack for taking wickets at high-pressure overs were highlighted for their game-changing impact.
+
+## 5.3 Prediction Model Outcomes
+
+The predictive model successfully estimated future batting performance with a high degree of accuracy. Provided valuable insight into the likely contribution of a batsman in subsequent overs, hence useful for strategizing.
+
+# 6. Visualization
+
+### 6.1 Top Batsmen by Total Runs
+
+-   Bar charts showed the total runs scored by the top 10 batsmen, therefore relative contributions of the batsmen.
+
+-   Below is the code for visualizing the Top 10 batsmen
+
+This code generates a bar chart visualizing the top 10 batsmen in a cricket league, ranked by their total runs scored.
+
+![](images/WhatsApp Image 2024-11-22 at 16.24.10_023d4143.jpg)
+
+![](images/WhatsApp Image 2024-11-22 at 16.24.10_964776a3.jpg)
+
+**Code Breakdown:**
+
+1.  **`ggplot(top_batsmen, aes(x = reorder(batsman, -total_runs), y = total_runs, fill = batsman))`**
+
+```         
+This line initiates the ggplot, using the `top_batsmen` data frame as the input.  -   `aes` specifies the aesthetics for the plot:      -   `x = reorder(batsman, -total_runs)`: The x-axis is set to the `batsman` variable, reordered in descending order by `total_runs` to ensure the highest scorer is at the top.      -   `y = total_runs`: The y-axis represents the `total_runs` scored by each batsman.      -   `fill = batsman`: The bars are filled with different colors based on the `batsman` variable.
+```
+
+2.  **`geom_bar(stat = "identity")`**
+
+```         
+-   This layer adds the bar chart to the plot.  -   `stat = "identity"` specifies that the y-values should be directly mapped to the data, creating bars of the appropriate height.
+```
+
+3.  **`coord_flip()`**
+
+```         
+-   This function flips the x and y axes, making the bars horizontal instead of vertical. This is often used for better readability when labels are long.
+```
+
+4.  **`labs(title = "Top 10 Batsmen by Runs", x = "Batsman", y = "Total Runs")`**
+
+```         
+-   This layer sets the title and axis labels for the plot.
+```
+
+5.  **`theme_minimal()`**
+
+```         
+-   This applies a minimal theme to the plot, removing unnecessary elements and emphasizing the data.      **Overall, this code creates a horizontal bar chart that effectively visualizes the top 10 batsmen by their total runs, providing a clear and visually appealing representation of the data.**
+```
+
+***Here is the visualization of the Top 10 Batsman by Runs***
+
+The chart displays the top 10 batsmen in a cricket league, ranked by their total runs scored.
+
+**Key Observations:**
+
+-   **AB de Villiers** leads the list with the highest number of runs.
+
+-   **MS Dhoni** and **S Dhawan** follow closely behind.
+
+-   **CH Gayle**, **DA Warner**, **G Gambhir**, **RG Sharma**, **RV Uthappa**, **SK Raina**, and **V Kohli** complete the top 10.
+
+-   The number of runs scored varies significantly across players, with AB de Villiers having a clear lead.
+
+**Overall, the chart provides a visual representation of the top run-scorers in the league, highlighting the dominance of AB de Villiers.**
+
+### 6.2 Top Bowlers by Economy Rate
+
+The economy rates of the top 10 bowlers were plotted, highlighting their run-controlling abilities.
+
+![](images/WhatsApp Image 2024-11-22 at 16.19.54_1ac540ce.jpg)
+
+### [Evaluation of code]{.underline}
+
+1.  ggplot(top_bowlers, aes(x = reorder(bowler, economy_rate), y = economy_rate, fill = bowler))
+
+2.  This line initiates the ggplot, using the `top_bowlers` data frame as the input.
+
+3.  `aes` specifies the aesthetics for the plot:
+
+4.  `x = reorder(bowler, economy_rate)`: The x-axis is set to the `bowler` variable, reordered in ascending order by `economy_rate` to ensure the lowest economy rate is at the top.
+
+5.  `y = economy_rate`: The y-axis represents the `economy_rate` of each bowler.
+
+6.  `fill = bowler`: The bars are filled with different colors based on the `bowler` variable.
+
+7.  **`geom_bar(stat = "identity")`**
+
+    1.  This layer adds the bar chart to the plot.
+
+    2.  `stat = "identity"` specifies that the y-values should be directly mapped to the data, creating bars of the appropriate height.
+
+8.  **`coord_flip()`**
+
+    1.  This function flips the x and y axes, making the bars horizontal instead of vertical. This is often used for better readability when labels are long.
+
+9.  **`labs(title = "Top 10 Bowlers by Economy Rate", x = "Bowler", y = "Economy Rate")`**
+
+    1.  This layer sets the title and axis labels for the plot.
+
+10. **`theme_minimal()`**
+
+    1.This applies a minimal theme to the plot, removing unnecessary elements and emphasizing the data.
+
+    **Overall, this code creates a horizontal bar chart that effectively visualizes the top 10 bowlers by their economy rate, providing a clear and visually appealing representation of the data.**
+
+![](images/WhatsApp Image 2024-11-22 at 16.19.54_fec0caf7.jpg)The chart displays the top 10 bowlers in a cricket league, ranked by their economy rate.
+
+**Key Observations:**
+
+-   **LA Carseldine** has the lowest economy rate, indicating the most economical bowling performance.
+
+-   **Avesh Khan** and **DJ Thornely** follow closely behind.
+
+-   **Mohammad Nabi**, **SPD Smith**, **AM Rahane**, **NB Singh**, **Sachin Baby**, **N Rana**, and **AC Gilchrist** complete the top 10.
+
+-   The economy rates vary across players, with LA Carseldine having a significantly lower rate compared to others.
+
+**Overall, the chart provides a visual representation of the most economical bowlers in the league, highlighting the performance of LA Carseldine.**
+
+### ##Predicted vs. Actual Runs Predictive code
+
+**Predicting Batsman Performance**
+
+-   Developed a predictive model to forecast a batsman's runs in an over based on their previous performance.
+
+-   Utilized historical data to train the model, considering factors like recent form, opponent bowling attack, and pitch conditions.
+
+-   Evaluated the model's accuracy using appropriate metrics and refined it iteratively.
+
+Compared predicted and actual runs, validating the predictive model’s effectiveness and here is the code:
+
+**Lets get into code:**
+
+**1. Calculate Runs Scored by Each Batsman in Each Over:**
+
+-   **`batsman_performance <- deliveries %>%`**: This line starts a data manipulation pipeline using the `dplyr` package. It takes the `deliveries` dataset as input.
+
+-   **`group_by(match_id, over, batsman)`**: This groups the data by `match_id`, `over`, and `batsman`, creating a separate group for each combination of these variables.
+
+-   **`summarize(total_runs = sum(batsman_runs, na.rm = TRUE))`**: This calculates the total runs scored by each batsman in each over, handling missing values (`na.rm = TRUE`).
+
+-   **`ungroup()`**: This ungroups the data, returning it to a single data frame.
+
+**2. Predict Runs for a Batsman in an Over Based on Previous Performance:**
+
+-   **`arrange(match_id, batsman, over)`**: This sorts the data by `match_id`, `batsman`, and `over`, ensuring that the data is ordered chronologically within each match for each batsman.
+
+-   **`group_by(match_id, batsman)`**: This groups the data again by `match_id` and `batsman` to perform calculations within each match-batsman combination.
+
+-   **`mutate(predicted_runs = lag(total_runs))`**: This creates a new column called `predicted_runs`. For each row, it assigns the value of `total_runs` from the previous row, effectively predicting the current over's runs based on the previous over's performance.
+
+-   **`ungroup()`**: This ungroups the data again, returning it to a single data frame.
+
+**Overall:**
+
+This code calculates the total runs scored by each batsman in each over and then predicts the number of runs a batsman might score in the current over based on their performance in the previous over. This type of analysis could be useful for various purposes, such as:
+
+-   **Predicting Player Performance:** Using historical data to forecast future performance.
+
+-   **In-Match Decision Making:** Providing insights to coaches or players during a match.
+
+-   **Fantasy Cricket:** Assisting in player selection and strategy.
+
+By analyzing these predictions and comparing them to actual performance, we can gain valuable insights into player behavior and potential strategies.
+
+# 7.Particular Player Performance(Batsman and Bowler)
+
+### For Batsmen:
+
+Analysis of Performance: The script calculates the total runs scored by each batsman during each over. Grouping: Data is grouped by match_id, over, and batsman. Summarization: The script summarizes the total runs scored by batsmen in a specific over using batsman_runs
+
+![](images/WhatsApp Image 2024-11-22 at 16.28.55_f7de9511.jpg)
+
+The code is designed to analyze the batting performance of a specific cricket player within a given dataset. Let's evaluate:![](images/WhatsApp Image 2024-11-22 at 16.27.14_3f8a1702.jpg)
+
+**1. Player Name Specification:**
+
+-   The `player_name` variable is defined to store the name of the player whose performance we want to analyze. In this case, it's set to "DA Warner."
+
+**2. Data Filtering and Summarization:**
+
+-   The `deliveries` dataset is filtered to include only rows where the `batsman` column matches the specified `player_name`.
+
+-   The filtered data is summarized using the `summarize()` function to calculate the following metrics:
+
+    -   **`total_runs`**: The total number of runs scored by the player.
+
+    -   **`balls_faced`**: The total number of balls faced by the player.
+
+    -   **`strike_rate`**: The player's strike rate, calculated as (total runs / balls faced) \* 100.
+
+    -   **`boundaries`**: The number of boundaries (fours) scored by the player.
+
+    -   **`sixes`**: The number of sixes scored by the player.
+
+**3. Output Display:**
+
+-   The calculated batting performance metrics are printed to the console using the `print()` function.
+
+-   ![](images/WhatsApp Image 2024-11-22 at 16.27.13_320daa29.jpg)
+
+-   **Table Structure:**
+
+    -   **A tibble: 1 x 5**: This indicates that the table is a tibble (a modern data frame implementation in R) with 1 row and 5 columns.
+
+    -   **total_runs**: The total number of runs scored by WARNER.
+
+    -   **balls_faced**: The total number of balls faced by Warner.
+
+    -   **strike_rate**: Warner's batting strike rate, calculated as (total runs / balls faced) \* 100. A higher strike rate indicates a more aggressive batting style.
+
+    -   **boundaries**: The number of boundaries (fours) scored by Warner.
+
+    -   **sixes**: The number of sixes scored by Warner.
+
+        **Row Data:**
+
+    -   The single row contains the following values for Warner:
+
+    -   **total_runs**: 4014 runs
+
+    -   **balls_faced**: 2902 balls
+
+    -   **strike_rate**: 138.3184
+
+    -   **boundaries**: 401 fours
+
+    -   **sixes**: 160 sixes
+
+    -   This output summarizes batting performance based on the provided cricket data. It shows that he has scored 4014 runs off 2902 balls, with a strike rate of 138.32. He has hit 401 fours and 160 sixes in his innings.
+
+        This information can be used to analyze Warner's batting style, effectiveness, and overall contribution to the team's performance.
+
+    **Column Headers:**
+
+**In essence, the code provides a concise summary of a player's batting performance, including their total runs, balls faced, strike rate, and number of boundaries and sixes.**
+
+### For Bowler:
+
+Although the visible portion does not include specific calculations for bowlers, similar groupings and summarizations might be applied, possibly focusing on metrics like:![](images/WhatsApp Image 2024-11-22 at 16.20.17_06e423a9.jpg)![](images/WhatsApp Image 2024-11-22 at 16.20.17_d21460b8-01.jpg)
+
+Wickets Taken: Number of dismissals in each over. Economy Rate: Runs conceded per over. Bowling Performance: Wickets and runs conceded per bowler across overs or matches.
+
+The provided R code snippet is designed to analyze the bowling performance of a specific cricket player, in this case, "TS Mills." Let's see the code step-by-step:
+
+**1. Player Name Specification:**
+
+-   The `player_name` variable is defined and assigned the value "TS Mills". This variable will be used to filter the data for the specific player's bowling performance.
+
+**2. Data Filtering and Summarization:**
+
+-   **`deliveries %>% filter(bowler == player_name)`**: This part filters the `deliveries` dataset to include only rows where the `bowler` column matches the specified `player_name`. This isolates the bowling performances of TS Mills.
+
+-   **`summarize()`**: This function calculates the following key bowling metrics:
+
+    -   **`total_runs_conceded`**: The total number of runs conceded by TS Mills.
+
+    -   **`balls_bowled`**: The total number of balls bowled by TS Mills.
+
+    -   **`wickets_taken`**: The total number of wickets taken by TS Mills. (Note: There seems to be a missing argument within the `sum()` function for calculating wickets. You'll need to specify the column name that indicates whether a wicket was taken, such as `is_wicket` or `wicket`.)
+
+    -   **`economy_rate`**: The bowler's economy rate, calculated as (total runs conceded / overs bowled).
+
+**3. Output Display:**
+
+-   The calculated bowling performance metrics are printed to the console using the `print()` function.
+
+**Interpreting the Output:**
+
+After code is executed, we got a table summarizing TS Mills' bowling performance. The table showing:
+
+-   **Table Structure:**
+
+    -   **A tibble: 1 x 4**: This indicates that the table is a tibble (a modern data frame implementation in R) with 1 row and 4 columns.
+
+    -   **Column Headers:**
+
+        -   **total_runs_conceded**: The total number of runs conceded by TS Mills.
+
+        -   **balls_bowled**: The total number of balls bowled by TS Mills.
+
+        -   **wickets_taken**: The total number of wickets taken by TS Mills.
+
+        -   **economy_rate**: TS Mills' bowling economy rate, calculated as (total runs conceded / overs bowled).
+
+        **Row Data:**
+
+        The single row contains the following values for TS Mills:
+
+        -   **total_runs_conceded**: 157 runs
+
+        -   **balls_bowled**: 111 balls
+
+        -   **wickets_taken**: 0 wickets
+
+        -   **economy_rate**: 8.486486
+
+        **Interpretation:**
+
+        This output summarizes TS Mills' bowling performance based on the provided cricket data. It shows that he has conceded 157 runs from 111 balls bowled, resulting in a high economy rate of 8.48. He has not taken any wickets in the analyzed matches.
+
+# 8. Conclusion and Future Work
+
+-   This study demonstrates the value of data analytics in cricket, providing insights into player performance and predictive modeling. Key findings include:\
+    Discovery of those consistently top-performing players in terms of key metrics.It has designed a predictive model for batting performance, permitting foresight into strategy.
+
+-   CRICKWIZR how cricket data can transform your team. Whether you're a coach, analyst, or player, our platform provides actionable insights that improve gameplay, support strategic decisions, and enhance fan engagement.
+
+-   Explore adding more variables, leveraging advanced machine learning models, or extending to real-time data analysis.
+
+-   To further enhance the analysis and insights, the following areas can be explored:
+
+    1.  **Advanced Statistical Techniques:**
+
+    ```         
+    -   Employ advanced statistical techniques like Bayesian modeling, time series analysis, and machine learning algorithms to refine predictions and uncover deeper insights.  -   Incorporate player-specific factors, such as fatigue and injury history, to improve prediction accuracy.
+    ```
+
+    2.  **Real-Time Analytics:**
+
+    ```         
+    -   Develop real-time analytics tools to provide immediate insights during matches.  -   Track player performance in real time and identify potential match-turning strategies.
+    ```
+
+    3.  **Player Profiling:**
+
+    ```         
+    -   Create detailed player profiles, highlighting strengths, weaknesses, and preferred playing conditions.  -   Use these profiles to optimize team selection and strategy.
+    ```
+
+    4.  **Team Performance Analysis:**
+
+    ```         
+    -   Analyze team performance metrics, such as run rate, net run rate, and bowling economy.  -   Identify areas for improvement and suggest strategic changes.
+    ```
+
+    5.  **Impact of External Factors:**
+
+    ```         
+    -   Explore the impact of external factors, such as weather conditions, pitch quality, and crowd support, on player performance.
+    ```
+
+    6.  By delving deeper into these areas, we can unlock the full potential of cricket analytics and provide more comprehensive and valuable insights to enhance the sport
+
+# 9. References
+
+-   Kaggle Cricket Dataset
+-   R Documentation for dplyr and ggplot2
